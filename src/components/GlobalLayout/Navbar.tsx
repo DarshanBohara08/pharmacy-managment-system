@@ -1,27 +1,42 @@
 import React from "react";
-
+import { BsSearch } from "react-icons/bs";
 export const Navbar = () => {
+  const date = new Date();
+  let min = date.getMinutes();
+  let hrs = date.getHours();
+  let currentTime = `${hrs}:${min}`;
+
   return (
     <div className="flex flex-row w-full bg-red-600">
-      <div className="bg-[#1D242E] px-16 w-[251px] py-3">
-        <h1 className="text-white">Logo</h1>
+      <div className="bg-[#1D242E] w-[282px] py-3">
+        <h1 className="text-white text-center font-bold ">PMS</h1>
       </div>
       <div className="bg-[#F7FAFD] w-full px-10 py-1 flex flex-row justify-between">
-        <div className="bg-[#EDF1F5] flex flex-row w-[400px]">
+        <div className="flex  px-4 justify-between flex-row rounded-md bg-[#EDF1F5] w-[400px]">
           <input
-            className="px-8 py-2 bg-[#EDF1F5]"
+            className=" py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
             type="search"
             placeholder="Search for anything"
           />
-          <p>Search</p>
+          <div className="flex  flex-row justify-end  pt-3">
+            <BsSearch className="text-xl  text-gray-400" />
+          </div>
         </div>
 
-        <div className="bg-red-600">Language</div>
-        <div className="bg-green-600">
-          <p>Good Morning</p>
-          <div className="flex flex-row">
-            <p>Date</p>
-            <p>Time</p>
+        <div className=" w-[200px] text-gray-600">
+          <div className="flex flex-row gap-2">
+            <picture>
+              <img
+                className="h-6 w-6"
+                src="https://cdn-icons-png.flaticon.com/512/869/869869.png"
+                alt="sun"
+              />
+            </picture>
+            <p className="text-[#1c1c1c] text-base font-light">Good Morning</p>
+          </div>
+          <div className="flex flex-row gap-4 text-sm font-light">
+            <p>{date.toDateString()}</p>
+            <p>{currentTime}</p>
           </div>
         </div>
       </div>
