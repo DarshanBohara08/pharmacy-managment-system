@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: any }) => {
       <Navbar />
       <div className="flex flex-row h-screen">
         <Sidebar />
-        {children}
+        <div className="px-10 py-4">{children}</div>
       </div>
     </div>
   );
