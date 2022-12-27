@@ -7,8 +7,8 @@ export const Navbar = () => {
   let currentTime = `${hrs}:${min}`;
 
   return (
-    <div className="flex flex-row w-full bg-red-600">
-      <div className="bg-[#1D242E] w-[282px] py-3">
+    <div className="flex flex-row w-full">
+      <div className="bg-[#1D242E] w-[284px] py-5">
         <h1 className="text-white text-center font-bold ">PMS</h1>
       </div>
       <div className="bg-[#F7FAFD] w-full px-10 py-1 flex flex-row justify-between">

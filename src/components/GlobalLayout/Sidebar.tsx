@@ -6,10 +6,10 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogout } from "react-icons/md";
 export const Sidebar = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div className="flex flex-col bg-[#283342] text-white h-full px-[5px]">
-      <div className="flex flex-row gap-4 px-4 py-3">
+    <div className="flex flex-col bg-[#283342] text-white h-full w-[280px]">
+      <div className="flex flex-row gap-5 pl-[15px] py-3">
         <FaUserCircle className="text-5xl" />
         <div className="flex flex-col gap-1 py-2">
           <p className="text-xs">Darshan Bohara</p>

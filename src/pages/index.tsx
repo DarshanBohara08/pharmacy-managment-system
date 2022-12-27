@@ -1,14 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Card } from "../components/ReusableComponent/Card";
+import { CardHeaderSection } from "../modules/Dashboard/CardHeaderSection";
 
 export default function Home() {
   return (
-    <>
-      <p className="">Dashboard</p>
-    </>
+    <div className="w-full">
+      <CardHeaderSection />
+    </div>
   );
 }
