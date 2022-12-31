@@ -1,7 +1,12 @@
 import React from "react";
+import { InventoryHeader } from "../../modules/Inventory/InventoryHeader";
 
-const listOfMedicine = () => {
-  return <div className="w-full">listOfMedicine</div>;
+const ListOfMedicine = () => {
+  return (
+    <div className="w-full">
+      <InventoryHeader />
+    </div>
+  );
 };
 
-export default listOfMedicine;
+export default ListOfMedicine;

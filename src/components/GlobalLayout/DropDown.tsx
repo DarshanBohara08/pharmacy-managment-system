@@ -19,13 +19,7 @@ export const DropDown = ({
             className={`${dropdown ? "block py-2" : "hidden pb-0"} `}
             key={i.id}
           >
-            <Link
-              className="text-start px-4 py-3"
-              onClick={() => {
-                setDropdown(false);
-              }}
-              href={i.link}
-            >
+            <Link className="text-start px-4 py-3" href={i.link}>
               {i.name}
             </Link>
           </li>

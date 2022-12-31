@@ -1,7 +1,7 @@
 import React from "react";
 
-const medicineGroup = () => {
-  return <div className="w-full">medicineGroup</div>;
+const MedicineGroup = () => {
+  return <div className="w-full">MedicineGroup</div>;
 };
 
-export default medicineGroup;
+export default MedicineGroup;

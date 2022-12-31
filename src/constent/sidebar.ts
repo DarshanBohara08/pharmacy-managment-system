@@ -8,7 +8,7 @@ export const sidebar = [
   {
     id: 2,
     name: "Inventory",
-    link: "/inventory",
+    link: "",
     hasLink: true,
     subItem: [
       {
@@ -26,7 +26,7 @@ export const sidebar = [
   {
     id: 3,
     name: "Report",
-    link: "/report",
+    link: "",
     hasLink: true,
     subItem: [
       {
