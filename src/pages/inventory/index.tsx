@@ -1,7 +1,7 @@
 import React from "react";
 
 const index = () => {
-  return <div>Inventory</div>;
+  return <div className="w-full">Inventory</div>;
 };
 
 export default index;

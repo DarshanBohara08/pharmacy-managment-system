@@ -5,9 +5,18 @@
 
 *{
     font-family: "Roboto", sans-serif;
+    color:"#1c1c1c"
 }
 /* clears the ‘X’ from Chrome */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+/* sidebar content scrollable  */
+.sideBar_content_container {
+    height: 800px !important;
+    width: 233px !important;
+    padding: 20px 5px !important;
+  
+  }

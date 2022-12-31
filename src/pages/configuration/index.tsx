@@ -1,7 +1,7 @@
 import React from "react";
 
 const index = () => {
-  return <div>Configuration</div>;
+  return <div className="w-full">Configuration</div>;
 };
 
 export default index;

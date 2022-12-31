@@ -15,7 +15,11 @@ export const ReportSection = ({ ...props }: ICardWithHeaderSection) => {
           <h1 className="font-medium text-lg">{props.name}</h1>
           <div className="flex flex-row ">
             <form className=" font-light text-xs">
-              <input type="month" value={`${year}-${month}`} />
+              <input
+                className="outline-none"
+                type="month"
+                value={`${year}-${month}`}
+              />
             </form>
           </div>
         </div>

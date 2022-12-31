@@ -5,10 +5,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogout } from "react-icons/md";
+import { MenuItem } from "./MenuItem";
 export const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showSubMenu, setShowSubMenu] = useState(false);
   return (
-    <div className="flex flex-col bg-[#283342] text-white h-full w-[280px]">
+    <div className="w-[280px] flex flex-col bg-[#283342] text-white h-full">
       <div className="flex flex-row gap-5 pl-[15px] py-3">
         <FaUserCircle className="text-5xl" />
         <div className="flex flex-col gap-1 py-2">
@@ -51,15 +53,23 @@ export const Sidebar = () => {
           </div>
         </div>
       )}
-      <div className="">
+      <ul className="">
         {sidebar.map((i) => {
           return (
-            <div key={i.id} className="outline-none  px-4 py-3">
-              <Link href={i.link}>{i.name}</Link>
-            </div>
+            <>
+              <li key={i.id} className="outline-none">
+                <MenuItem
+                  id={i.id}
+                  name={i.name}
+                  link={i.link}
+                  hasLink={false}
+                  subItem={i.subItem}
+                />
+              </li>
+            </>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 };
