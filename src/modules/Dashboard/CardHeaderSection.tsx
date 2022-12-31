@@ -6,6 +6,7 @@ import {
   AiOutlineFilePdf,
   AiOutlineMinus,
 } from "react-icons/ai";
+import { RevenueCard } from "./RevenueCard";
 export const CardHeaderSection = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -61,16 +62,13 @@ export const CardHeaderSection = () => {
           detailLabel={"view detail report"}
           icon={"https://cdn-icons-png.flaticon.com/512/2897/2897763.png"}
           heading={"Good"}
-          isAmount={false}
         />
-        <Card
-          borderColor="yellow"
+        <RevenueCard
           link="#"
           name="Revenue"
           detailLabel={"view detail report"}
           icon={"https://cdn-icons-png.flaticon.com/512/1728/1728946.png"}
           heading={"8888"}
-          isAmount={true}
         />
         <Card
           borderColor="green"
@@ -79,7 +77,6 @@ export const CardHeaderSection = () => {
           detailLabel={"view detail report"}
           icon={"https://cdn-icons-png.flaticon.com/512/3022/3022827.png"}
           heading={"100"}
-          isAmount={false}
         />
         <Card
           borderColor="blue"
@@ -88,7 +85,6 @@ export const CardHeaderSection = () => {
           detailLabel={"view detail report"}
           icon={"https://cdn-icons-png.flaticon.com/512/5581/5581141.png"}
           heading={"01"}
-          isAmount={false}
         />
       </div>
     </div>
