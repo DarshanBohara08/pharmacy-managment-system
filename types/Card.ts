@@ -6,5 +6,5 @@ export interface ICard {
   heading: string;
   name: string;
   link: string;
-  borderColor?: "red" | "green" | "blue";
+  borderColor?: "red" | "green" | "blue" | string;
 }

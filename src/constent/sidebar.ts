@@ -8,7 +8,7 @@ export const sidebar = [
   {
     id: 2,
     name: "Inventory",
-    link: "",
+    link: "/inventory",
     hasLink: true,
     subItem: [
       {
