@@ -1,6 +1,8 @@
 import React from "react";
 import { VscChevronRight } from "react-icons/vsc";
 import { Button } from "../../components/ReusableComponent/Button";
+import { BsSearch } from "react-icons/bs";
+import { MdOutlineFilterAlt } from "react-icons/md";
 
 export const InventoryHeader = () => {
   const listOfMedicine = 12;
@@ -32,8 +34,31 @@ export const InventoryHeader = () => {
         </div>
       </div>
       <div className="flex flex-row justify-between">
-        <div>Search</div>
-        <div>Filter</div>
+        <div className="flex  px-4 justify-between flex-row rounded-md bg-[#EDF1F5] w-[400px] border border-gray-400">
+          <input
+            className="w-full py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
+            type="search"
+            placeholder="Search for anything"
+          />
+          <div className="flex  flex-row justify-end  pt-3">
+            <BsSearch className="text-xl  text-gray-400" />
+          </div>
+        </div>
+
+        <div className=" flex flex-row justify-center gap-1 items-center">
+          <MdOutlineFilterAlt className="text-2xl text-[#1c1c1c] opacity-70" />
+          <select
+            className="border font-light text-sm border-[#1c1c1c] border-opacity-30 outline-none px-10 py-3 text-start rounded-md"
+            name="group"
+          >
+            <option className="placeholder:text-gray-400">
+              - Select Group -
+            </option>
+            <option value="Med A">Med A</option>
+            <option value="Med B">Med B</option>
+            <option value="Med C">Med C</option>
+          </select>
+        </div>
       </div>
     </div>
   );

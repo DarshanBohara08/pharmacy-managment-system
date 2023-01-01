@@ -14,7 +14,7 @@ export const Navbar = () => {
       <div className="bg-[#F7FAFD] w-full px-10 py-1 flex flex-row justify-between">
         <div className="flex  px-4 justify-between flex-row rounded-md bg-[#EDF1F5] w-[400px]">
           <input
-            className=" py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
+            className="w-full py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
             type="search"
             placeholder="Search for anything"
           />
