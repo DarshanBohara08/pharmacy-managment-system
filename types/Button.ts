@@ -4,4 +4,5 @@ export interface IButton {
   showIcon?: boolean;
   bgColor: "red" | "blue";
   onClick: () => any;
+  width: boolean;
 }

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { VscChevronRight } from "react-icons/vsc";
 import { Button } from "../../components/ReusableComponent/Button";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineFilterAlt } from "react-icons/md";
+import { AddNewMedicine } from "./AddNewMedicine";
+import { CustomModal } from "../../components/ReusableComponent/CustomModal";
 
 export const InventoryHeader = () => {
+  const [showModal, setShowModal] = useState(false);
   const listOfMedicine = 12;
   return (
     <div className=" py-6 px-10 flex flex-col gap-8">
@@ -23,8 +26,9 @@ export const InventoryHeader = () => {
         </div>
         <div>
           <Button
+            width={false}
             onClick={() => {
-              console.log("hello");
+              setShowModal(true);
             }}
             bgColor="red"
             label="Add New Item"
@@ -60,6 +64,9 @@ export const InventoryHeader = () => {
           </select>
         </div>
       </div>
+      <CustomModal isOpen={showModal}>
+        <AddNewMedicine setShowModal={setShowModal} />
+      </CustomModal>
     </div>
   );
 };
