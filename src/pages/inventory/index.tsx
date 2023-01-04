@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../components/ReusableComponent/Button";
 import { Card } from "../../components/ReusableComponent/Card";
+import { CustomModal } from "../../components/ReusableComponent/CustomModal";
 import { InventoryCardData } from "../../constent/InventoryCardData";
+import { AddNewMedicine } from "../../modules/Inventory/AddNewMedicine";
 
 const Index = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="bg-[#EDF1F5] w-full  text-[#1c1c1c]">
       <div className=" py-6 px-10">
@@ -15,12 +19,13 @@ const Index = () => {
           <div>
             <Button
               onClick={() => {
-                console.log("hello");
+                setShowModal(true);
               }}
               bgColor="red"
               label="Add New Item"
               showIcon={true}
               icon="/assets/sign.png"
+              width={false}
             />
           </div>
         </div>
@@ -41,6 +46,9 @@ const Index = () => {
           })}
         </div>
       </div>
+      <CustomModal isOpen={showModal}>
+        <AddNewMedicine setShowModal={setShowModal} />
+      </CustomModal>
     </div>
   );
 };

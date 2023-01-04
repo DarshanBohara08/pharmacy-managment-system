@@ -1,21 +1,47 @@
 import { Form, Formik } from "formik";
 import React from "react";
+import { toast } from "react-toastify";
+import { z } from "zod";
 import { Button } from "../../components/ReusableComponent/Button";
 import { Input } from "../../components/ReusableComponent/Form/Input";
 import { Select } from "../../components/ReusableComponent/Form/Select";
 import { Textarea } from "../../components/ReusableComponent/Form/Textarea";
+
+// TODO
+// const validationSchema = z
+//   .object({
+//     medicineName: z.string(),
+//     medicineGroup: z.string(),
+//     howToUse: z.string(),
+//     sideEffect: z.string(),
+//   })
+//   .partial();
 
 export const AddNewMedicine = ({
   setShowModal,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const options = [
+    { key: "Select Medicine Group", value: "" },
+    { key: "Med A", value: "a" },
+    { key: "Med B", value: "b" },
+    { key: "Med C", value: "c" },
+  ];
+  const successMessage = () => toast.success("Successfully Submitted");
   return (
     <div>
       <Formik
-        initialValues={[]}
-        onSubmit={() => {
-          console.log("Submitted");
+        initialValues={{
+          medicineName: "",
+          medicineGroup: "",
+          howToUse: "",
+          sideEffect: "",
+        }}
+        onSubmit={(formik, values) => {
+          console.log("Submitted", values);
+          setShowModal(false);
+          successMessage();
         }}
         validationSchema={undefined}
       >
@@ -33,7 +59,7 @@ export const AddNewMedicine = ({
                   label="Medicine Group"
                   name="medicineGroup"
                   placeHolder="Select Medicine Group"
-                  options={[{ key: "A", value: "a" }]}
+                  options={options}
                 />
                 <Textarea
                   label="How to use"
