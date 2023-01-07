@@ -3,25 +3,14 @@ import Table from "rc-table";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import { Router, useRouter } from "next/router";
 import { medicineDetailData } from "../../constent/medicineDetailData";
+import { IMedicineDetail } from "../../../types/MedicineDetail";
+import { CustomModal } from "../../components/ReusableComponent/CustomModal";
+import { AddNewMedicine } from "./AddNewMedicine";
 
-// const data = [
-//   {
-//     MedicineName: "MED A",
-//     MedicineID: 28,
-//     GroupName: "GROUP A",
-//     StockinQTY: "1",
-//   },
-//   {
-//     MedicineName: "MED B",
-//     MedicineID: 36,
-//     GroupName: "GROUP A",
-//     StockinQTY: "2",
-//   },
-// ];
 export const MedicineTable = () => {
   const route = useRouter();
-  const [dataId, setDataId] = useState();
-  console.log("dataId", dataId);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedData, setSelectedData] = useState<IMedicineDetail>();
   const data = medicineDetailData.map((i) => {
     return {
       id: i.id,
@@ -31,9 +20,6 @@ export const MedicineTable = () => {
       stockLeft: i.stockLeft,
     };
   });
-  const handleDelete = (id: any) => {
-    setDataId(id);
-  };
   const columns = [
     {
       title: "Medicine Name",
@@ -80,27 +66,39 @@ export const MedicineTable = () => {
           stockLeft: number;
         }
       ) => {
-        console.log("item", rowData);
         let id = rowData.id;
         return (
           <div className="flex flex-row gap-5 items-center justify-center">
             <AiOutlineDelete />
-            <AiOutlineEdit />
-            <AiOutlineEye
-              onClick={() => route.push(`/inventory/listOfMedicine/${id}`)}
+            <AiOutlineEdit
+              onClick={() => {
+                setSelectedData({
+                  id: rowData.id,
+                  medicineGroup: rowData.medicineGroup,
+                  medicineId: rowData.medicineId,
+                  medicineName: rowData.medicineName,
+                  stockLeft: rowData.stockLeft,
+                });
+                setShowModal(true);
+              }}
             />
+            <AiOutlineEye onClick={() => route.push(`/inventory/${id}`)} />
           </div>
         );
       },
     },
   ];
-
-  console.log("data", data);
   return (
     <div className="py-6 px-10 w-full text-[#1c1c1c] text-light">
       <div className=" border rounded-md border-gray-400">
         <Table className="text-center " columns={columns} data={data} />
       </div>
+      <CustomModal isOpen={showModal}>
+        <AddNewMedicine
+          selectedData={selectedData}
+          setShowModal={setShowModal}
+        />
+      </CustomModal>
     </div>
   );
 };

@@ -1,17 +1,22 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { VscChevronRight } from "react-icons/vsc";
 import { Button } from "../../components/ReusableComponent/Button";
+import { CustomModal } from "../../components/ReusableComponent/CustomModal";
 import { medicineDetailData } from "../../constent/medicineDetailData";
+import { AddNewMedicine } from "../../modules/Inventory/AddNewMedicine";
 
 const MedicineDetailPage = () => {
-  const data = medicineDetailData.map((i) => {
-    return i;
-  });
-  const [detailData] = data || [];
+  const [showModal, setShowModal] = useState(false);
+  const route = useRouter();
+  const id = route.query.inventoryId;
+  const dataId = typeof id === "string" ? parseInt(id) : id;
+  const filterData = medicineDetailData.filter((i) => i.id === dataId);
+  const [detailData] = filterData || [];
   return (
     <div className="w-full">
-      <div className="flex flex-row justify-between">
+      <div className="flex py-6 px-10 flex-row justify-between ">
         <div className="flex flex-col gap-8">
           <div>
             <h1 className="font-bold text-2xl flex flex-row">
@@ -21,7 +26,7 @@ const MedicineDetailPage = () => {
               <span className="text-gray-500 flex flex-row items-center">
                 List of medicine <VscChevronRight className="text-lg" />
               </span>
-              Medicine Name
+              {detailData?.medicineName}
             </h1>
             <p className="text-sm">A detail view of medicine</p>
           </div>
@@ -42,25 +47,25 @@ const MedicineDetailPage = () => {
             icon="/assets/editing.png"
             bgColor="blue"
             label="Edit Medicine"
-            onClick={() => console.log("clicked")}
+            onClick={() => setShowModal(true)}
             width={false}
           />
         </div>
       </div>
-      <div className=" grid grid-cols-2 w-full capitalize gap-20 justify-between">
+      <div className=" grid grid-cols-2 py-6 px-10 w-full capitalize gap-20 justify-between">
         <div className="border border-gray-400">
           <h1 className="py-2 px-8 text-lg font-medium">Medicine</h1>
           <hr className="border-gray-400" />
           <div className="flex flex-row justify-between py-2 px-8">
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-xl text-start">
-                {detailData.medicineId}
+                {detailData?.medicineId}
               </p>
               <h1 className="text-base">Medicine ID</h1>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-xl text-start">
-                {detailData.medicineGroup}
+                {detailData?.medicineGroup}
               </p>
               <h1 className="text-base">Medicine Group</h1>
             </div>
@@ -72,32 +77,32 @@ const MedicineDetailPage = () => {
           <div className="flex flex-row justify-between py-2 px-8">
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-xl text-start">
-                {detailData.lifeTimeSupply}
+                {detailData?.lifeTimeSupply}
               </p>
               <h1 className="text-base">Lifetime Supply</h1>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-xl text-start">
-                {detailData.lifeTimeSale}
+                {detailData?.lifeTimeSale}
               </p>
               <h1 className="text-base">Lifetime Sale</h1>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-xl text-start">
-                {detailData.stockLeft}
+                {detailData?.stockLeft}
               </p>
               <h1 className="text-base">Stock Left</h1>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-5 mb-8">
+      <div className="flex flex-col gap-5 py-6 px-10">
         <div className="border border-gray-400">
           <h1 className="py-2 px-8 text-lg font-medium">How to use</h1>
           <hr className="border-gray-400" />
           <div className="flex flex-row justify-between py-2 px-8">
             <div className="flex flex-col gap-2">
-              <p className="text-base">{detailData.howToUse}</p>
+              <p className="text-base">{detailData?.howToUse}</p>
             </div>
           </div>
         </div>
@@ -106,19 +111,24 @@ const MedicineDetailPage = () => {
           <hr className="border-gray-400" />
           <div className="flex flex-row justify-between py-2 px-8">
             <div className="flex flex-col gap-2">
-              <p className="text-base">{detailData.sideEffect}</p>
+              <p className="text-base">{detailData?.sideEffect}</p>
             </div>
           </div>
         </div>
       </div>
-      <Button
-        width={false}
-        icon="/assets/delete.png"
-        showIcon={true}
-        onClick={() => console.log("Delete")}
-        bgColor="redWhite"
-        label="Delete Medicine"
-      />
+      <div className="px-10">
+        <Button
+          width={false}
+          icon="/assets/delete.png"
+          showIcon={true}
+          onClick={() => console.log("Delete")}
+          bgColor="redWhite"
+          label="Delete Medicine"
+        />
+      </div>
+      <CustomModal isOpen={showModal}>
+        <AddNewMedicine setShowModal={setShowModal} />
+      </CustomModal>
     </div>
   );
 };

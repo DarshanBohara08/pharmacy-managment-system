@@ -7,7 +7,7 @@ import { Input } from "../../components/ReusableComponent/Form/Input";
 import { Select } from "../../components/ReusableComponent/Form/Select";
 import { Textarea } from "../../components/ReusableComponent/Form/Textarea";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { IForm } from "../../../types/Form";
+import { IMedicineDetail } from "../../../types/MedicineDetail";
 // TODO
 const validationSchema = z.object({
   medicineName: z.string({
@@ -27,8 +27,10 @@ const validationSchema = z.object({
 });
 
 export const AddNewMedicine = ({
+  selectedData,
   setShowModal,
 }: {
+  selectedData?: IMedicineDetail;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const options = [
@@ -48,6 +50,12 @@ export const AddNewMedicine = ({
           sideEffect: "",
           medicineId: null,
           medicineQty: null,
+          // medicineName: selectedData?.medicineName,
+          // medicineGroup: selectedData?.medicineGroup,
+          // howToUse: selectedData?.howToUse,
+          // sideEffect: selectedData?.sideEffect,
+          // medicineId: selectedData?.medicineId,
+          // medicineQty: selectedData?.medicineQty,
         }}
         onSubmit={(formik, values) => {
           setShowModal(false);
@@ -60,7 +68,11 @@ export const AddNewMedicine = ({
         {(formik) => {
           return (
             <Form>
-              <h1 className="text-center mb-4 text-lg">Add Medicine Detail</h1>
+              <h1 className="text-center mb-4 text-lg">
+                {selectedData?.id
+                  ? "Edit Medicine Detail"
+                  : "Add Medicine Detail"}
+              </h1>
               <div className="flex flex-col gap-4">
                 <div className="w-full flex flex-row gap-10">
                   <div className="w-1/2">
