@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+type borderColors = "red" | "green" | "blue" | string;
 
 export interface ICard {
   detailLabel: string;
@@ -6,5 +6,5 @@ export interface ICard {
   heading: string;
   name: string;
   link: string;
-  borderColor?: "red" | "green" | "blue" | string;
+  borderColor?: borderColors;
 }

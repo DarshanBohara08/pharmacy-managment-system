@@ -6,22 +6,25 @@ import { Button } from "../../components/ReusableComponent/Button";
 import { Input } from "../../components/ReusableComponent/Form/Input";
 import { Select } from "../../components/ReusableComponent/Form/Select";
 import { Textarea } from "../../components/ReusableComponent/Form/Textarea";
-
+import { toFormikValidationSchema } from "zod-formik-adapter";
 // TODO
-// const validationSchema = z
-//   .object({
-//     medicineName: z.string(),
-//     medicineGroup: z.string(),
-//     howToUse: z.string(),
-//     sideEffect: z.string(),
-//   })
-//   .partial();
+const validationSchema = z.object({
+  medicineName: z.string({
+    required_error: "Medicine Name Required",
+  }),
+  medicineGroup: z.string({
+    required_error: "Medicine Group Required",
+  }),
+  howToUse: z.string().optional(),
+  sideEffect: z.string().optional(),
+});
 
 export const AddNewMedicine = ({
   setShowModal,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const data = [];
   const options = [
     { key: "Select Medicine Group", value: "" },
     { key: "Med A", value: "a" },
@@ -39,11 +42,11 @@ export const AddNewMedicine = ({
           sideEffect: "",
         }}
         onSubmit={(formik, values) => {
-          console.log("Submitted", values);
+          console.log("Submitted");
           setShowModal(false);
           successMessage();
         }}
-        validationSchema={undefined}
+        validationSchema={toFormikValidationSchema(validationSchema)}
       >
         {(formik) => {
           return (
@@ -51,10 +54,14 @@ export const AddNewMedicine = ({
               <h1 className="text-center mb-4 text-lg">Add Medicine Detail</h1>
               <div className="flex flex-col gap-4">
                 <Input
+                  formik={formik}
                   name="medicineName"
                   placeHolder="Enter Medicine Name"
                   label="Medicine Name"
                 />
+                {/* {formik.errors && formik.touched ? (
+                  <p className="text-red-200">{formik.errors.medicineName}</p>
+                ) : null} */}
                 <Select
                   label="Medicine Group"
                   name="medicineGroup"

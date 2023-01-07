@@ -1,4 +1,4 @@
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 import React from "react";
 import { IForm } from "../../../../types/Form";
 
@@ -20,6 +20,12 @@ export const Select = ({ ...props }: IForm) => {
           );
         })}
       </Field>
+      <div className=" h-2">
+        <ErrorMessage
+          name={props.name}
+          render={(err) => <span className="text-red-500 text-xs">{err}</span>}
+        />
+      </div>
     </div>
   );
 };
