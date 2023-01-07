@@ -1,6 +1,7 @@
 import React from "react";
 import { InventoryHeader } from "../../modules/Inventory/InventoryHeader";
 import { MedicineTable } from "../../modules/Inventory/MedicineTable";
+import MedicineDetailPage from "./[listOfMedicineId]";
 
 const ListOfMedicine = () => {
   return (

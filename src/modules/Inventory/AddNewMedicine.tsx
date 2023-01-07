@@ -7,13 +7,20 @@ import { Input } from "../../components/ReusableComponent/Form/Input";
 import { Select } from "../../components/ReusableComponent/Form/Select";
 import { Textarea } from "../../components/ReusableComponent/Form/Textarea";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+import { IForm } from "../../../types/Form";
 // TODO
 const validationSchema = z.object({
   medicineName: z.string({
-    required_error: "Medicine Name Required",
+    required_error: " Required",
   }),
   medicineGroup: z.string({
-    required_error: "Medicine Group Required",
+    required_error: "Required",
+  }),
+  medicineId: z.number({
+    required_error: " Required",
+  }),
+  medicineQty: z.number({
+    required_error: "Required",
   }),
   howToUse: z.string().optional(),
   sideEffect: z.string().optional(),
@@ -24,7 +31,6 @@ export const AddNewMedicine = ({
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const data = [];
   const options = [
     { key: "Select Medicine Group", value: "" },
     { key: "Med A", value: "a" },
@@ -40,11 +46,14 @@ export const AddNewMedicine = ({
           medicineGroup: "",
           howToUse: "",
           sideEffect: "",
+          medicineId: null,
+          medicineQty: null,
         }}
         onSubmit={(formik, values) => {
-          console.log("Submitted");
           setShowModal(false);
           successMessage();
+          values.resetForm();
+          console.log("formik", formik);
         }}
         validationSchema={toFormikValidationSchema(validationSchema)}
       >
@@ -53,21 +62,46 @@ export const AddNewMedicine = ({
             <Form>
               <h1 className="text-center mb-4 text-lg">Add Medicine Detail</h1>
               <div className="flex flex-col gap-4">
-                <Input
-                  formik={formik}
-                  name="medicineName"
-                  placeHolder="Enter Medicine Name"
-                  label="Medicine Name"
-                />
-                {/* {formik.errors && formik.touched ? (
-                  <p className="text-red-200">{formik.errors.medicineName}</p>
-                ) : null} */}
-                <Select
-                  label="Medicine Group"
-                  name="medicineGroup"
-                  placeHolder="Select Medicine Group"
-                  options={options}
-                />
+                <div className="w-full flex flex-row gap-10">
+                  <div className="w-1/2">
+                    <Input
+                      type="text"
+                      formik={formik}
+                      name="medicineName"
+                      placeHolder="Enter Medicine Name"
+                      label="Medicine Name"
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    <Input
+                      type="number"
+                      formik={formik}
+                      name="medicineId"
+                      placeHolder="Enter Medicine ID"
+                      label="Medicine ID"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-row  gap-10">
+                  <div className="w-1/2">
+                    <Select
+                      label="Medicine Group"
+                      name="medicineGroup"
+                      placeHolder="Select Medicine Group"
+                      options={options}
+                    />
+                  </div>
+                  <div className="w-1/2">
+                    {" "}
+                    <Input
+                      type="number"
+                      formik={formik}
+                      name="medicineQty"
+                      placeHolder="Enter Medicine Qty"
+                      label="Quantity in Number"
+                    />
+                  </div>
+                </div>
                 <Textarea
                   label="How to use"
                   name="howToUse"

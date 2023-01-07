@@ -11,7 +11,7 @@ export const Input = ({ ...props }: IForm) => {
           name={props.name}
           placeholder={props.placeHolder}
           className="pl-3 py-2 bg-gray-100 border border-gray-300 rounded-md w-full"
-          type="text"
+          type={props.type}
         />
         <ErrorMessage
           name={props.name}

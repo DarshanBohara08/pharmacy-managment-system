@@ -1,4 +1,4 @@
-type buttonColor = "red" | "blue";
+type buttonColor = "red" | "blue" | "redWhite";
 
 export interface IButton {
   label: string;
