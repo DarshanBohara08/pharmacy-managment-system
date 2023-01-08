@@ -35,27 +35,27 @@ export const AddNewMedicine = ({
 }) => {
   const options = [
     { key: "Select Medicine Group", value: "" },
-    { key: "Med A", value: "a" },
-    { key: "Med B", value: "b" },
-    { key: "Med C", value: "c" },
+    { key: "Med A", value: "Med A" },
+    { key: "Med B", value: "Med B" },
+    { key: "Med C", value: "Med C" },
   ];
   const successMessage = () => toast.success("Successfully Submitted");
+  console.log("SelectedData", selectedData);
   return (
     <div>
       <Formik
         initialValues={{
-          medicineName: "",
-          medicineGroup: "",
-          howToUse: "",
-          sideEffect: "",
-          medicineId: null,
-          medicineQty: null,
-          // medicineName: selectedData?.medicineName,
-          // medicineGroup: selectedData?.medicineGroup,
-          // howToUse: selectedData?.howToUse,
-          // sideEffect: selectedData?.sideEffect,
-          // medicineId: selectedData?.medicineId,
-          // medicineQty: selectedData?.medicineQty,
+          medicineName: selectedData?.medicineName,
+          medicineGroup: selectedData?.medicineGroup
+            ? {
+                key: selectedData?.medicineGroup,
+                value: selectedData?.medicineGroup,
+              }
+            : { key: "", value: "" },
+          howToUse: selectedData?.howToUse,
+          sideEffect: selectedData?.sideEffect,
+          medicineId: selectedData?.medicineId,
+          medicineQty: selectedData?.medicineQty,
         }}
         onSubmit={(formik, values) => {
           setShowModal(false);
@@ -64,8 +64,10 @@ export const AddNewMedicine = ({
           console.log("formik", formik);
         }}
         validationSchema={toFormikValidationSchema(validationSchema)}
+        enableReinitialize
       >
         {(formik) => {
+          console.log("formik", formik.values);
           return (
             <Form>
               <h1 className="text-center mb-4 text-lg">
@@ -97,6 +99,7 @@ export const AddNewMedicine = ({
                 <div className="flex flex-row  gap-10">
                   <div className="w-1/2">
                     <Select
+                      formik={formik.values.medicineGroup.value}
                       label="Medicine Group"
                       name="medicineGroup"
                       placeHolder="Select Medicine Group"

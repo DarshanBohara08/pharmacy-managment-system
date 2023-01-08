@@ -10,7 +10,6 @@ import { AddNewMedicine } from "./AddNewMedicine";
 export const MedicineTable = () => {
   const route = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [selectedData, setSelectedData] = useState<IMedicineDetail>();
   const data = medicineDetailData.map((i) => {
     return {
       id: i.id,
@@ -72,17 +71,12 @@ export const MedicineTable = () => {
             <AiOutlineDelete />
             <AiOutlineEdit
               onClick={() => {
-                setSelectedData({
-                  id: rowData.id,
-                  medicineGroup: rowData.medicineGroup,
-                  medicineId: rowData.medicineId,
-                  medicineName: rowData.medicineName,
-                  stockLeft: rowData.stockLeft,
-                });
                 setShowModal(true);
               }}
             />
-            <AiOutlineEye onClick={() => route.push(`/inventory/${id}`)} />
+            <AiOutlineEye
+              onClick={() => route.push(`/inventory/listOfMedicine/${id}`)}
+            />
           </div>
         );
       },
@@ -94,10 +88,7 @@ export const MedicineTable = () => {
         <Table className="text-center " columns={columns} data={data} />
       </div>
       <CustomModal isOpen={showModal}>
-        <AddNewMedicine
-          selectedData={selectedData}
-          setShowModal={setShowModal}
-        />
+        <AddNewMedicine setShowModal={setShowModal} />
       </CustomModal>
     </div>
   );

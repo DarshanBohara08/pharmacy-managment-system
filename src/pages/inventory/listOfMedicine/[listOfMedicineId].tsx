@@ -2,15 +2,18 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { VscChevronRight } from "react-icons/vsc";
-import { Button } from "../../components/ReusableComponent/Button";
-import { CustomModal } from "../../components/ReusableComponent/CustomModal";
-import { medicineDetailData } from "../../constent/medicineDetailData";
-import { AddNewMedicine } from "../../modules/Inventory/AddNewMedicine";
+import { IMedicineDetail } from "../../../../types/MedicineDetail";
+import { Button } from "../../../components/ReusableComponent/Button";
+import { CustomModal } from "../../../components/ReusableComponent/CustomModal";
+import { medicineDetailData } from "../../../constent/medicineDetailData";
+import { AddNewMedicine } from "../../../modules/Inventory/AddNewMedicine";
 
 const MedicineDetailPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedData, setSelectedData] = useState<IMedicineDetail>();
+
   const route = useRouter();
-  const id = route.query.inventoryId;
+  const id = route.query.listOfMedicineId;
   const dataId = typeof id === "string" ? parseInt(id) : id;
   const filterData = medicineDetailData.filter((i) => i.id === dataId);
   const [detailData] = filterData || [];
@@ -47,7 +50,24 @@ const MedicineDetailPage = () => {
             icon="/assets/editing.png"
             bgColor="blue"
             label="Edit Medicine"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              setShowModal(true);
+              setSelectedData({
+                id: detailData.id,
+                medicineId: detailData.medicineId,
+                medicineGroup: detailData.medicineGroup
+                  ? {
+                      key: detailData.medicineGroup,
+                      value: detailData.medicineGroup,
+                    }
+                  : { key: "", value: "" },
+                medicineName: detailData.medicineName,
+                stockLeft: detailData.stockLeft,
+                howToUse: detailData.howToUse,
+                sideEffect: detailData.sideEffect,
+                medicineQty: detailData.stockLeft,
+              });
+            }}
             width={false}
           />
         </div>
@@ -127,7 +147,10 @@ const MedicineDetailPage = () => {
         />
       </div>
       <CustomModal isOpen={showModal}>
-        <AddNewMedicine setShowModal={setShowModal} />
+        <AddNewMedicine
+          selectedData={selectedData}
+          setShowModal={setShowModal}
+        />
       </CustomModal>
     </div>
   );

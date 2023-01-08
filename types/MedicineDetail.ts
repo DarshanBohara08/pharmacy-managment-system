@@ -2,11 +2,14 @@ export interface IMedicineDetail {
   id: number;
   medicineName: string;
   medicineId: number;
-  medicineGroup: string;
+  medicineGroup: {
+    key: string;
+    value: string;
+  };
   lifeTimeSupply?: number;
   lifeTimeSale?: number;
   stockLeft: number;
-  howToUse?: string;
-  sideEffect?: string;
-  medicineQty?: number;
+  howToUse: string;
+  sideEffect: string;
+  medicineQty: number;
 }
