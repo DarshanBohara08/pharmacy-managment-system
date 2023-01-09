@@ -61,7 +61,6 @@ export const AddNewMedicine = ({
           setShowModal(false);
           successMessage();
           values.resetForm();
-          console.log("formik", formik);
         }}
         validationSchema={toFormikValidationSchema(validationSchema)}
         enableReinitialize
@@ -99,7 +98,7 @@ export const AddNewMedicine = ({
                 <div className="flex flex-row  gap-10">
                   <div className="w-1/2">
                     <Select
-                      formik={formik.values.medicineGroup.value}
+                      formik={formik}
                       label="Medicine Group"
                       name="medicineGroup"
                       placeHolder="Select Medicine Group"
@@ -107,7 +106,6 @@ export const AddNewMedicine = ({
                     />
                   </div>
                   <div className="w-1/2">
-                    {" "}
                     <Input
                       type="number"
                       formik={formik}
@@ -135,7 +133,7 @@ export const AddNewMedicine = ({
                     console.log("Submtted");
                   }}
                   bgColor="blue"
-                  label="Submit"
+                  label={selectedData ? "Update" : "Submit"}
                   showIcon={false}
                 />
                 <Button
