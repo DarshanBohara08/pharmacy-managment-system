@@ -83,7 +83,7 @@ export const MedicineTable = () => {
     },
   ];
   return (
-    <div className="py-6 px-10 w-full text-[#1c1c1c] text-light">
+    <div className="py-2 px-10 w-full text-[#1c1c1c] text-light">
       <div className=" border rounded-md border-gray-400">
         <Table className="text-center " columns={columns} data={data} />
       </div>
