@@ -1,43 +1,31 @@
 import { useRouter } from "next/router";
 import Table from "rc-table";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { VscChevronRight } from "react-icons/vsc";
 import { Button } from "../../../components/ReusableComponent/Button";
+import { CustomModal } from "../../../components/ReusableComponent/CustomModal";
 import { medicineGroupData } from "../../../constent/medicineGroupData";
+import { AddMedicineInGroup } from "../../../modules/Inventory/AddMedicineInGroup";
 
 const MedicineGroupDetail = () => {
+  const [showModal, setShowModal] = useState(false);
   const route = useRouter();
   const routeId = route.query.medicineGroupId;
   const id = typeof routeId === "string" ? parseInt(routeId) : routeId;
   const data = medicineGroupData.filter((i) => i.id === id);
-  const [detailData] = data || [];
+  const filterMedicineData = data?.map(({ medicineName }) => {
+    return medicineName;
+  });
+
   const columns = [
     {
       title: "Medicine Name",
-      dataIndex: "medicineName",
-      key: "medicineName",
+      dataIndex: "name",
+      key: "name",
       width: 400,
       className: " border-b border-gray-400 py-2",
-      render: (
-        item: {
-          id: number;
-          name: string;
-        }[]
-      ) => {
-        return (
-          <>
-            {item.map((i) => {
-              return (
-                <div key={i.id}>
-                  <p>{i.name}</p>
-                </div>
-              );
-            })}
-          </>
-        );
-      },
     },
     {
       title: "No of Medicine",
@@ -55,7 +43,7 @@ const MedicineGroupDetail = () => {
       render: () => {
         return (
           <div className="flex flex-row gap-5 items-center justify-center">
-            <AiOutlineDelete />
+            <AiOutlineDelete className="cursor-pointer" />
           </div>
         );
       },
@@ -71,8 +59,13 @@ const MedicineGroupDetail = () => {
                 <span className="text-gray-500 flex flex-row items-center">
                   Inventory <VscChevronRight className=" text-lg" />
                 </span>
-                <span className="text-gray-500 flex flex-row items-center">
-                  List of medicine <VscChevronRight className="text-lg" />
+                <span
+                  onClick={() => {
+                    route.push(`/inventory/medicineGroup`);
+                  }}
+                  className="cursor-pointer text-gray-500 flex flex-row items-center"
+                >
+                  Medicine Group <VscChevronRight className="text-lg" />
                 </span>
                 <h1>
                   {data[0]?.medicineGroup} ( {data[0]?.noOfMedicine})
@@ -95,7 +88,7 @@ const MedicineGroupDetail = () => {
             <Button
               width={false}
               onClick={() => {
-                //   setShowModal(true);
+                setShowModal(true);
               }}
               bgColor="red"
               label="Add Medicine"
@@ -105,10 +98,28 @@ const MedicineGroupDetail = () => {
           </div>
         </div>
         <div className=" border rounded-md border-gray-400">
-          {/* TODO */}
-          <Table className="text-center " columns={columns} data={data} />
+          <Table
+            className="text-center "
+            columns={columns}
+            data={filterMedicineData[0]}
+          />
+        </div>
+        <div>
+          <Button
+            width={false}
+            onClick={() => {
+              // setShowModal(true);
+            }}
+            bgColor="redWhite"
+            label="Delete Medicine Group"
+            showIcon={true}
+            icon="/assets/delete.png"
+          />
         </div>
       </div>
+      <CustomModal isOpen={showModal}>
+        <AddMedicineInGroup setShowModal={setShowModal} />
+      </CustomModal>
     </div>
   );
 };

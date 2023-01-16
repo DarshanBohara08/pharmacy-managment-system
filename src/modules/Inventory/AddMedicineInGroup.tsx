@@ -3,14 +3,16 @@ import React from "react";
 import { z } from "zod";
 import { Button } from "../../components/ReusableComponent/Button";
 import { Input } from "../../components/ReusableComponent/Form/Input";
-import { toFormikValidationSchema } from "zod-formik-adapter";
 
 const validationSchema = z.object({
-  medicineGroup: z.string({
+  medicineName: z.string({
+    required_error: " Required",
+  }),
+  noOfMedicine: z.number({
     required_error: "Required",
   }),
 });
-export const AddMedicineGroup = ({
+export const AddMedicineInGroup = ({
   setShowModal,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,22 +21,29 @@ export const AddMedicineGroup = ({
     <div>
       <Formik
         initialValues={{
-          medicineGroup: "",
+          medicineName: "",
+          noOfMedicine: null,
         }}
-        enableReinitialize
-        validationSchema={toFormikValidationSchema(validationSchema)}
         onSubmit={(values) => console.log("Submitted", values)}
+        validationSchema={validationSchema}
       >
         {(formik) => {
           return (
             <Form>
-              <h1 className="text-center mb-4 text-lg">Add Medicine Group</h1>
+              <h1 className="text-center mb-4 text-lg">Add Medicine Detail</h1>
               <Input
-                name="medicineGroup"
-                placeHolder="Enter Medicine Group"
                 formik={formik}
                 type="text"
-                label="Medicine Group"
+                label="Medicine Name"
+                placeHolder={"Enter Medicine Name"}
+                name={"medicineName"}
+              />
+              <Input
+                formik={formik}
+                type="number"
+                label="No of Medicine"
+                placeHolder={"Enter No of Medicine "}
+                name={"medicineName"}
               />
               <div className="flex flex-row mt-5 justify-between">
                 <Button
@@ -43,7 +52,7 @@ export const AddMedicineGroup = ({
                     console.log("Submtted");
                   }}
                   bgColor="blue"
-                  label="Submit"
+                  label={"Submit"}
                   showIcon={false}
                 />
                 <Button

@@ -1,19 +1,19 @@
 export const medicineGroupData = [
   {
     id: 1,
+    noOfMedicine: 3,
     medicineGroup: "Med A",
-    noOfMedicine: 200,
     medicineName: [
       {
-        id: 1,
+        noOfMedicine: 200,
         name: "A",
       },
       {
-        id: 2,
+        noOfMedicine: 200,
         name: "B",
       },
       {
-        id: 3,
+        noOfMedicine: 200,
         name: "C",
       },
     ],
@@ -21,18 +21,18 @@ export const medicineGroupData = [
   {
     id: 2,
     medicineGroup: "Med B",
-    noOfMedicine: 200,
+    noOfMedicine: 3,
     medicineName: [
       {
-        id: 1,
+        noOfMedicine: 200,
         name: "A",
       },
       {
-        id: 2,
+        noOfMedicine: 200,
         name: "B",
       },
       {
-        id: 3,
+        noOfMedicine: 200,
         name: "C",
       },
     ],
@@ -40,18 +40,18 @@ export const medicineGroupData = [
   {
     id: 3,
     medicineGroup: "Med C",
-    noOfMedicine: 200,
+    noOfMedicine: 3,
     medicineName: [
       {
-        id: 1,
+        noOfMedicine: 200,
         name: "A",
       },
       {
-        id: 2,
+        noOfMedicine: 200,
         name: "B",
       },
       {
-        id: 3,
+        noOfMedicine: 200,
         name: "C",
       },
     ],

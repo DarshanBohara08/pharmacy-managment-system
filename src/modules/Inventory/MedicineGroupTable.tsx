@@ -49,6 +49,7 @@ export const MedicineGroupTable = () => {
         return (
           <div className="flex flex-row gap-5 items-center justify-center">
             <AiOutlineEye
+              className="cursor-pointer"
               onClick={() => route.push(`/inventory/medicineGroup/${id}`)}
             />
           </div>

@@ -8,7 +8,6 @@ import { Select } from "../../components/ReusableComponent/Form/Select";
 import { Textarea } from "../../components/ReusableComponent/Form/Textarea";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { IMedicineDetail } from "../../../types/MedicineDetail";
-// TODO
 const validationSchema = z.object({
   medicineName: z.string({
     required_error: " Required",
