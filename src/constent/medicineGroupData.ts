@@ -44,15 +44,15 @@ export const medicineGroupData = [
     medicineName: [
       {
         id: 1,
-        medicineName: "A",
+        name: "A",
       },
       {
         id: 2,
-        medicineName: "B",
+        name: "B",
       },
       {
         id: 3,
-        medicineName: "C",
+        name: "C",
       },
     ],
   },

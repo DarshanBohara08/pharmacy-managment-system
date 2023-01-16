@@ -4,7 +4,6 @@ import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { VscChevronRight } from "react-icons/vsc";
-import { IMedicineName } from "../../../../types/MedicineName";
 import { Button } from "../../../components/ReusableComponent/Button";
 import { medicineGroupData } from "../../../constent/medicineGroupData";
 
@@ -14,7 +13,6 @@ const MedicineGroupDetail = () => {
   const id = typeof routeId === "string" ? parseInt(routeId) : routeId;
   const data = medicineGroupData.filter((i) => i.id === id);
   const [detailData] = data || [];
-  console.log("detailData", detailData);
   const columns = [
     {
       title: "Medicine Name",
@@ -23,16 +21,14 @@ const MedicineGroupDetail = () => {
       width: 400,
       className: " border-b border-gray-400 py-2",
       render: (
-        // @ts-ignore
-        item,
-        rowData: {
+        item: {
           id: number;
-          name: number;
+          name: string;
         }[]
       ) => {
         return (
           <>
-            {rowData.map((i) => {
+            {item.map((i) => {
               return (
                 <div key={i.id}>
                   <p>{i.name}</p>
@@ -56,17 +52,7 @@ const MedicineGroupDetail = () => {
       key: "action",
       width: 400,
       className: " border-b border-gray-400 py-2 ",
-      render: (
-        // @ts-ignore
-        item,
-        rowData: {
-          id: number;
-          medicineName: IMedicineName;
-          noOfMedicine: number;
-          medicineGroup: string;
-        }
-      ) => {
-        let id = rowData.id;
+      render: () => {
         return (
           <div className="flex flex-row gap-5 items-center justify-center">
             <AiOutlineDelete />
@@ -89,7 +75,7 @@ const MedicineGroupDetail = () => {
                   List of medicine <VscChevronRight className="text-lg" />
                 </span>
                 <h1>
-                  {detailData?.medicineGroup} ( {detailData?.noOfMedicine})
+                  {data[0]?.medicineGroup} ( {data[0]?.noOfMedicine})
                 </h1>
               </h1>
               <p className="text-sm">A detail view of medicine</p>
@@ -120,7 +106,7 @@ const MedicineGroupDetail = () => {
         </div>
         <div className=" border rounded-md border-gray-400">
           {/* TODO */}
-          {/* <Table className="text-center " columns={columns} data={detailData} /> */}
+          <Table className="text-center " columns={columns} data={data} />
         </div>
       </div>
     </div>
