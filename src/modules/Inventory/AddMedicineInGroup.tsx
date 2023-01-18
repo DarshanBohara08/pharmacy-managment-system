@@ -31,20 +31,22 @@ export const AddMedicineInGroup = ({
           return (
             <Form>
               <h1 className="text-center mb-4 text-lg">Add Medicine Detail</h1>
-              <Input
-                formik={formik}
-                type="text"
-                label="Medicine Name"
-                placeHolder={"Enter Medicine Name"}
-                name={"medicineName"}
-              />
-              <Input
-                formik={formik}
-                type="number"
-                label="No of Medicine"
-                placeHolder={"Enter No of Medicine "}
-                name={"medicineName"}
-              />
+              <div className="gap-4 flex flex-col">
+                <Input
+                  formik={formik}
+                  type="text"
+                  label="Medicine Name"
+                  placeHolder={"Enter Medicine Name"}
+                  name={"medicineName"}
+                />
+                <Input
+                  formik={formik}
+                  type="number"
+                  label="No of Medicine"
+                  placeHolder={"Enter No of Medicine "}
+                  name={"medicineName"}
+                />
+              </div>
               <div className="flex flex-row mt-5 justify-between">
                 <Button
                   width={true}
