@@ -8,7 +8,6 @@ import { MdOutlineLogout } from "react-icons/md";
 import { MenuItem } from "./MenuItem";
 export const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showSubMenu, setShowSubMenu] = useState(false);
   return (
     <div className="w-[280px] flex flex-col bg-[#283342] text-white h-full">
       <div className="flex flex-row gap-5 pl-[15px] py-3">

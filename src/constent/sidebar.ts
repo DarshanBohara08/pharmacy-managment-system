@@ -26,17 +26,17 @@ export const sidebar = [
   {
     id: 3,
     name: "Report",
-    link: "",
+    link: "/report",
     hasLink: true,
     subItem: [
       {
         id: 1,
-        link: "/report/salesreport",
+        link: "/report/salesReport",
         name: "Sales Report ",
       },
       {
         id: 2,
-        link: "/report/paymentsreport",
+        link: "/report/paymentsReport",
         name: "Payment Report",
       },
     ],

@@ -26,7 +26,10 @@ export const Card = ({
     cardClass += `border border-blue-600`;
     cardFooterBg += `blue-600`;
   }
-
+  if (props.borderColor === "yellow") {
+    cardClass += `border border-yellow-600`;
+    cardFooterBg += `yellow-600`;
+  }
   return (
     <div className={`${cardClass}`}>
       <picture>
