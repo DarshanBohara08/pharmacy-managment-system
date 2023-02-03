@@ -29,6 +29,16 @@ export const cardWithHeaderSectionDate = [
     link: "#",
     linkLabel: "go to customer page",
   },
+  {
+    id: 4,
+    name: "quick report",
+    questionOne: "qty of medicine sold",
+    answerOne: "200",
+    questionTwo: "invoice generated",
+    answerTwo: "50",
+    link: "#",
+    linkLabel: "go to report page",
+  },
 ];
 export const reportData = [
   {

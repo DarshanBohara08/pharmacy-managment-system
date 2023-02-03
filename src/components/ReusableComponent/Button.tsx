@@ -25,7 +25,7 @@ export const Button = ({ ...props }: IButton) => {
               <img className="w-4 h-4" src={props.icon} alt="icon" />
             </picture>
           )}
-          <p className="font-medium text-base">{props.label}</p>
+          <p className="font-medium 2xl:text-2xl text-lg ">{props.label}</p>
         </div>
       </button>
     </div>

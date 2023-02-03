@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { Card } from "../../components/ReusableComponent/Card";
-import {
-  AiOutlineFileExcel,
-  AiOutlineFilePdf,
-  AiOutlineMinus,
-} from "react-icons/ai";
-import { RevenueCard } from "./RevenueCard";
+import { AiOutlineFileExcel, AiOutlineFilePdf } from "react-icons/ai";
 export const CardHeaderSection = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -14,11 +9,11 @@ export const CardHeaderSection = () => {
     <div className="bg-[#EDF1F5] w-full py-6 px-10 text-[#1c1c1c]">
       <div className="flex flex-row justify-between mb-8 ">
         <div>
-          <h1 className="font-bold text-2xl">Dashboard</h1>
-          <p className="text-sm">A quick data view of inventory</p>
+          <h1 className="font-bold text-2xl 2xl:text-4xl">Dashboard</h1>
+          <p className="text-sm 2xl:text-xl">A quick data view of inventory</p>
         </div>
         <div className="flex flex-row justify-center gap-5 items-center border border-[#1c1c1c] px-4 py-2">
-          <p>Download Report</p>
+          <p className="2xl:text-xl">Download Report</p>
           <BsChevronDown
             className="cursor-pointer"
             onClick={() => setShowModal(true)}
@@ -26,15 +21,15 @@ export const CardHeaderSection = () => {
         </div>
       </div>
       {showModal && (
-        <div className="relative  h-50 ">
-          <div className="absolute bg-white right-0 -top-7 font-light rounded-sm border border-[#1c1c1c]">
+        <div className="relative  h-50 bg-red-600">
+          <div className="absolute bg-white right-0  -top-7 font-light rounded-sm border border-[#1c1c1c]">
             <div className="px-4 py-2 flex flex-row ">
               <AiOutlineFileExcel className="text-[#1c1c1c] text-lg mt-[2px]" />
               <p
                 onClick={() => {
                   setShowModal(false);
                 }}
-                className="text-black cursor-pointer px-4 text-sm "
+                className="text-black cursor-pointer px-4 text-sm 2xl:text-lg "
               >
                 Excel
               </p>
@@ -46,7 +41,7 @@ export const CardHeaderSection = () => {
                 onClick={() => {
                   setShowModal(false);
                 }}
-                className=" cursor-pointer px-4 text-sm"
+                className=" cursor-pointer px-4 text-sm 2xl:text-lg"
               >
                 PDF
               </p>
@@ -54,7 +49,7 @@ export const CardHeaderSection = () => {
           </div>
         </div>
       )}
-      <div className="flex flex-row w-full justify-between">
+      <div className="flex flex-row w-full gap-5">
         <Card
           borderColor="red"
           link="#"
@@ -63,7 +58,8 @@ export const CardHeaderSection = () => {
           icon={"https://cdn-icons-png.flaticon.com/512/2897/2897763.png"}
           heading={"Good"}
         />
-        <RevenueCard
+        <Card
+          borderColor="yellow"
           link="#"
           name="Revenue"
           detailLabel={"view detail report"}

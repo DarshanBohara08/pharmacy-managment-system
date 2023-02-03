@@ -13,8 +13,10 @@ const Index = () => {
       <div className=" py-6 px-10">
         <div className="flex flex-row justify-between mb-8">
           <div>
-            <h1 className="font-bold text-2xl">Inventory</h1>
-            <p className="text-sm">List of medicines available for sale</p>
+            <h1 className="font-bold text-2xl 2xl:text-4xl">Inventory</h1>
+            <p className="text-sm 2xl:text-xl">
+              List of medicines available for sale
+            </p>
           </div>
           <div>
             <Button
@@ -29,7 +31,7 @@ const Index = () => {
             />
           </div>
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 gap-10">
           {InventoryCardData.map((i) => {
             return (
               <div key={i.id}>
