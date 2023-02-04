@@ -14,15 +14,17 @@ export const InventoryHeader = () => {
       <div className="flex flex-row justify-between">
         <div className="">
           <div className="flex flex-row gap-1">
-            <h1 className="font-bold text-2xl">
-              <span className="text-gray-500">Inventory</span>
+            <h1 className="font-bold text-2xl text-gray-500 2xl:text-4xl">
+              Inventory
             </h1>
             <div className="flex flex-row items-center gap-1 font-bold text-2xl">
               <VscChevronRight className="text-lg" />
-              <p>list of medicines({listOfMedicine})</p>
+              <p className="text-2xl 2xl:text-4xl">
+                list of medicines({listOfMedicine})
+              </p>
             </div>
           </div>
-          <p className="text-sm">A quick data view of inventory</p>
+          <p className="text-sm 2xl:text-xl">A quick data view of inventory</p>
         </div>
         <div>
           <Button
@@ -40,7 +42,7 @@ export const InventoryHeader = () => {
       <div className="flex flex-row justify-between">
         <div className="flex  px-4 justify-between flex-row rounded-md bg-[#EDF1F5] w-[400px] border border-gray-400">
           <input
-            className="w-full py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
+            className="w-full py-2 bg-transparent outline-none placeholder:font-light  text-lg 2xl:text-2xl"
             type="search"
             placeholder="Search for anything"
           />
@@ -50,9 +52,9 @@ export const InventoryHeader = () => {
         </div>
 
         <div className=" flex flex-row justify-center gap-1 items-center">
-          <MdOutlineFilterAlt className="text-2xl text-[#1c1c1c] opacity-70" />
+          <MdOutlineFilterAlt className="text-2xl 2xl:text-4xl text-[#1c1c1c] opacity-70" />
           <select
-            className="border font-light text-sm border-[#1c1c1c] border-opacity-30 outline-none px-10 py-3 text-start rounded-md"
+            className="border font-light  text-lg 2xl:text-2xl border-[#1c1c1c] border-opacity-30 outline-none px-10 py-3 text-start rounded-md"
             name="group"
           >
             <option className="placeholder:text-gray-400">

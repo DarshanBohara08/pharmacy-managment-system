@@ -25,21 +25,22 @@ const MedicineGroupDetail = () => {
       dataIndex: "name",
       key: "name",
       width: 400,
-      className: " border-b border-gray-400 py-2",
+      className: "  border-b border-gray-400 py-2 w-[400px] 2xl:w-[50%]",
     },
     {
       title: "No of Medicine",
       dataIndex: "noOfMedicine",
       key: "noOfMedicine",
       width: 400,
-      className: " border-b border-gray-400 py-2",
+      className: "  border-b border-gray-400 py-2 w-[400px] 2xl:w-[50%]",
     },
     {
       title: "Action",
       dataIndex: "action",
       key: "action",
       width: 400,
-      className: " border-b border-gray-400 py-2 ",
+      className:
+        " border-b border-gray-400 2xl:px-10 py-2 w-[400px] 2xl:w-[50%] ",
       render: () => {
         return (
           <div className="flex flex-row gap-5 items-center justify-center">
@@ -55,10 +56,11 @@ const MedicineGroupDetail = () => {
         <div className="flex  flex-row justify-between ">
           <div className="flex flex-col gap-8">
             <div>
-              <h1 className="font-bold text-2xl flex flex-row">
+              <h1 className="font-bold text-2xl  2xl:text-4xl flex flex-row">
                 <span className="text-gray-500 flex flex-row items-center">
                   Inventory <VscChevronRight className=" text-lg" />
                 </span>
+
                 <span
                   onClick={() => {
                     route.push(`/inventory/medicineGroup`);
@@ -71,11 +73,11 @@ const MedicineGroupDetail = () => {
                   {data[0]?.medicineGroup} ( {data[0]?.noOfMedicine})
                 </h1>
               </h1>
-              <p className="text-sm">A detail view of medicine</p>
+              <p className="text-sm 2xl:text-xl">A detail view of medicine</p>
             </div>
             <div className="flex  px-4 justify-between flex-row rounded-md bg-[#EDF1F5] w-[400px] border border-gray-400">
               <input
-                className="w-full py-2 bg-transparent outline-none placeholder:font-light placeholder:text-base"
+                className="w-full py-2 bg-transparent outline-none placeholder:font-light text-lg 2xl:text-2xl"
                 type="search"
                 placeholder="Search for anything"
               />
@@ -99,7 +101,7 @@ const MedicineGroupDetail = () => {
         </div>
         <div className=" border rounded-md border-gray-400">
           <Table
-            className="text-center "
+            className="text-center w-full text-base 2xl:text-2xl"
             columns={columns}
             data={filterMedicineData[0]}
           />

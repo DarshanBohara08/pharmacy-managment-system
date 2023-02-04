@@ -7,7 +7,7 @@ const Report = () => {
   return (
     <div className="w-full">
       <div className=" py-6 px-10 flex flex-col gap-8">
-        <div>
+        {/* <div>
           <h1 className="font-bold text-2xl">Report</h1>
           <p className="text-sm">Overal report related to the pharmacy </p>
         </div>
@@ -26,7 +26,8 @@ const Report = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
+        <p>Project in Progress</p>
       </div>
     </div>
   );

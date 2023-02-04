@@ -1,5 +1,6 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
+
 export const Navbar = () => {
   const date = new Date();
   let min = date.getMinutes();
@@ -35,7 +36,7 @@ export const Navbar = () => {
               />
             </picture>
             <p className="text-[#1c1c1c] text-base 2xl:text-2xl font-light">
-              Good Morning
+              {currentTime > "12" ? "Good Afternoon" : "Good Morning"}
             </p>
           </div>
           <div className="flex flex-row gap-4 justify-center text-sm 2xl:text-lg font-light">
