@@ -4,7 +4,7 @@ import { IButton } from "../../../types/Button";
 
 export const Button = ({ ...props }: IButton) => {
   let buttonClass = `${
-    props.width ? "w-60" : "w-auto"
+    props.width ? "w-60 2xl:w-80" : "w-auto"
   } px-8 w- py-2 text-white `;
   if (props.bgColor === "red") {
     buttonClass += `bg-red-500 `;

@@ -4,7 +4,7 @@ import { IForm } from "../../../../types/Form";
 
 export const Textarea = ({ ...props }: IForm) => {
   return (
-    <div className="flex flex-col gap-2 text-[#1c1c1c] font-light text-sm">
+    <div className="flex flex-col gap-2 text-[#1c1c1c] font-light text-base 2xl:text-2xl">
       <label>{props.label}</label>
       <Field
         as="textarea"
