@@ -9,7 +9,8 @@ const SalesReport = () => {
       <ReportHeader />
       <div className="py-6 px-10 flex flex-row w-full">
         <div className="w-1/2">
-          <SalesReportChart />
+          {/* TODO */}
+          {/* <SalesReportChart /> */}
         </div>
         <OrderReport />
       </div>
