@@ -11,31 +11,27 @@ const data = medicineGroupData.map((i) => {
     noOfMedicine: i.noOfMedicine,
   };
 });
-console.log("data", data);
 export const MedicineGroupTable = () => {
   const route = useRouter();
-  console.log("routeId", route);
   const columns = [
     {
       title: "Group Name",
       dataIndex: "medicineGroup",
       key: "medicineGroup",
-      width: 400,
-      className: " border-b border-gray-400 py-2",
+      className: " border-b border-gray-400 py-2 w-[400px] 2xl:w-[50%] ",
     },
     {
       title: "No of Medicine",
       dataIndex: "noOfMedicine",
       key: "noOfMedicine",
-      width: 400,
-      className: " border-b border-gray-400 py-2",
+      className: " border-b border-gray-400 py-2 w-[400px] 2xl:w-[50%]",
     },
     {
       title: "Action",
       dataIndex: "action",
       key: "action",
-      width: 400,
-      className: " border-b border-gray-400 py-2 ",
+      className:
+        " border-b border-gray-400 2xl:px-10 py-2 w-[400px] 2xl:w-[50%]",
       render: (
         // @ts-ignore
         item,
@@ -58,10 +54,10 @@ export const MedicineGroupTable = () => {
     },
   ];
   return (
-    <div className="py-2 px-10">
+    <div className="py-2 px-10 w-full text-[#1c1c1c] text-light">
       <div className=" border rounded-md border-gray-400">
         <Table
-          className="text-center"
+          className="text-center w-full text-base 2xl:text-2xl"
           columns={columns}
           data={data ? data : []}
         />

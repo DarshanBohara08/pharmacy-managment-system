@@ -6,16 +6,20 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineLogout } from "react-icons/md";
 import { MenuItem } from "./MenuItem";
+import { useRouter } from "next/router";
 export const Sidebar = () => {
+  const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
-  const [showSubMenu, setShowSubMenu] = useState(false);
   return (
-    <div className="w-[280px] flex flex-col bg-[#283342] text-white h-full">
+    <div className="w-[280px] 2xl:w-[400px] flex flex-col bg-[#283342] text-white h-full">
       <div className="flex flex-row gap-5 pl-[15px] py-3">
-        <FaUserCircle className="text-5xl" />
+        <span className="flex flex-col justify-center">
+          <FaUserCircle className="text-5xl" />
+        </span>
         <div className="flex flex-col gap-1 py-2">
-          <p className="text-xs">Darshan Bohara</p>
-          <p className="text-[#C8AD10] font-bold text-xs">Admin</p>
+          <p className="text-xs  2xl:text-2xl">Darshan Bohara</p>
+          <p className="text-[#C8AD10] font-bold text-xs 2xl:text-2xl">Admin</p>
         </div>
         <BsThreeDotsVertical
           onClick={() => {
@@ -33,7 +37,7 @@ export const Sidebar = () => {
                 onClick={() => {
                   setShowModal(false);
                 }}
-                className="text-black cursor-pointer px-4 text-sm "
+                className="text-black cursor-pointer px-4 text-sm 2xl:text-xl "
               >
                 My profile
               </p>
@@ -45,7 +49,7 @@ export const Sidebar = () => {
                 onClick={() => {
                   setShowModal(false);
                 }}
-                className=" cursor-pointer px-4 text-sm"
+                className=" cursor-pointer px-4 text-sm 2xl:text-xl"
               >
                 Logout
               </p>
@@ -57,7 +61,7 @@ export const Sidebar = () => {
         {sidebar.map((i) => {
           return (
             <>
-              <li key={i.id} className="outline-none">
+              <li key={i.id} className="outline-none  text-lg 2xl:text-2xl">
                 <MenuItem
                   id={i.id}
                   name={i.name}

@@ -10,7 +10,6 @@ export default function Home() {
   const data = reportData.map((i) => {
     return i;
   });
-  console.log(data, "data");
   return (
     <div className="w-full">
       <CardHeaderSection />
@@ -30,14 +29,6 @@ export default function Home() {
             </div>
           );
         })}
-        <ReportSection
-          name={data[0].name}
-          questionOne={data[0].questionOne}
-          answerOne={data[0].answerOne}
-          questionTwo={data[0].questionTwo}
-          answerTwo={data[0].answerTwo}
-          link={""}
-        />
       </div>
     </div>
   );

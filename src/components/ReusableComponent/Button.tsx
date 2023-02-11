@@ -4,7 +4,7 @@ import { IButton } from "../../../types/Button";
 
 export const Button = ({ ...props }: IButton) => {
   let buttonClass = `${
-    props.width ? "w-60" : "w-auto"
+    props.width ? "w-60 2xl:w-80" : "w-auto"
   } px-8 w- py-2 text-white `;
   if (props.bgColor === "red") {
     buttonClass += `bg-red-500 `;
@@ -25,7 +25,7 @@ export const Button = ({ ...props }: IButton) => {
               <img className="w-4 h-4" src={props.icon} alt="icon" />
             </picture>
           )}
-          <p className="font-medium text-base">{props.label}</p>
+          <p className="font-medium 2xl:text-2xl text-lg ">{props.label}</p>
         </div>
       </button>
     </div>
